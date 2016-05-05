@@ -1,0 +1,46 @@
+name:                dev
+version:             0.0.0.1
+synopsis:            A development server for WAI meant to just work.
+description:         Powerful yet easy to use development server.
+homepage:            https://github.com/urbanslug/dev#readme
+bug-reports:         https://github.com/urbanslug/dev/issues
+-- tested-with:
+license:             MIT
+license-file:        LICENSE
+author:              Njagi Mwaniki
+maintainer:          njagi@urbanslug.com
+copyright:           Njagi Mwaniki 2016 - 2020
+category:            Web
+build-type:          Simple
+extra-source-files:  build.hamlet
+extra-doc-files:     Changelog.md
+                   , README.md
+cabal-version:       >=1.10
+
+library
+  hs-source-dirs:      src
+  exposed-modules:     Dev
+  build-depends:       base >= 4.7 && < 5
+                     , ghcid >= 0.6 && < 0.7
+  default-language:    Haskell2010
+
+executable dev
+  hs-source-dirs:      app
+  main-is:             Main.hs
+  ghc-options:         -threaded -rtsopts -with-rtsopts=-N
+  build-depends:       base
+                     , dev
+  default-language:    Haskell2010
+
+test-suite dev-test
+  type:                exitcode-stdio-1.0
+  hs-source-dirs:      test
+  main-is:             Spec.hs
+  build-depends:       base
+                     , dev
+  ghc-options:         -threaded -rtsopts -with-rtsopts=-N
+  default-language:    Haskell2010
+
+source-repository head
+  type:     git
+  location: https://github.com/urbanslug/dev
